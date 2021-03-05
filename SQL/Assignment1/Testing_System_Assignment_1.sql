@@ -52,7 +52,7 @@ CREATE TABLE CategoryQuestion(
 );
 -- Question  8:
 CREATE TABLE `Question`(
-				QuestionID 				TINYINT AUTO_INCREMENT PRIMARY KEY,
+				QuestionID 				TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 				Content 				NVARCHAR(100) NOT NULL,
 				CategoryID				TINYINT NOT NULL,
 				TypeID 					TINYINT NOT NULL,
@@ -66,19 +66,19 @@ CREATE TABLE `Question`(
 CREATE TABLE `Answer`(
 				AnswerID 				TINYINT AUTO_INCREMENT PRIMARY KEY,
 				Content 				NVARCHAR(100) NOT NULL,
-				QuestionID 				TINYINT NOT NULL,
+				QuestionID 				TINYINT UNSIGNED NOT NULL,
 				isCorrect				BIT DEFAULT 1,
 				FOREIGN KEY(QuestionID) REFERENCES Question(QuestionID)
 );
 -- Question  10:
 CREATE TABLE `Exam`(
-				ExamID 					TINYINT AUTO_INCREMENT PRIMARY KEY,
+				ExamID 					TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 				`Code` 					CHAR(10) NOT NULL,
-				Tilte 					NVARCHAR(50),
+				Title 					NVARCHAR(50),
 				CategoryID 				TINYINT NOT NULL,
 				Duration				TINYINT NOT NULL,
 				CreatorID				TINYINT NOT NULL,
-				CreaDate 				DATETIME DEFAULT NOW(),
+				CreateDate 				DATETIME DEFAULT NOW(),
 				FOREIGN KEY(CategoryID) REFERENCES CategoryQuestion(CategoryID),
 				FOREIGN KEY(CreatorID) 	REFERENCES `Account`(AccountID)
 );
@@ -147,7 +147,7 @@ VALUES 								(	1		,    1		,'2019-03-05'),
 									(	1		,    9		,'2020-04-09'),
 									(	10		,    10		,'2020-04-10');
                             
-INSERT INTO TypeQuestion			(TypeName			) 
+INSERT INTO `TypeQuestion`			(TypeName			) 
 VALUES 								('Essay'			), 
 									('Multiple-Choice'	);
                             
@@ -164,7 +164,7 @@ VALUES 								('Java'			),
 									('PHP'			);
                                     
 INSERT INTO `Question` 				(Content				,	 CategoryID		, 	TypeID			,	 CreatorID	,	 	CreateDate)
-VALUES               				('Câu hỏi về Java'		,		1			,		'1'		,	 	'2'		,		'2020-11-04'),
+VALUES               				('Câu hỏi về Java'		,		1			,		'1'		,	 	    '2'		,		'2020-11-04'),
 									('Câu hỏi về PHP'		,		1			,		'1'			,		'2'		,		'2020-08-02'),
 									('Câu hỏi về C#'		,		1			,		'1'			,		'3'		,		'2020-06-10'),
 									('Câu hỏi về Ruby'		,		1			,		'1'			,		'4'		,		'2020-03-11'),
@@ -173,7 +173,7 @@ VALUES               				('Câu hỏi về Java'		,		1			,		'1'		,	 	'2'		,		'20
 									('Câu hỏi về ASP.NET'	,		1			,		'1'			,		'7'		,		'2020-11-14'),
 									('Câu hỏi về C++'		,		1			,		'1'			,		'8'		,		'2020-12-12'),
 									('Câu hỏi về SQL'		,		1			,		'1'			,		'9'		,		'2020-10-01'),
-									('Câu hỏi về Python'	,		1			,		'1'			,		'10'	,	'2020-09-04');
+									('Câu hỏi về Python'	,		1			,		'1'			,		'10'	,	    '2020-09-04');
                      
 INSERT INTO Answer	(  Content		, QuestionID	, isCorrect	)
 VALUES 				(N'Trả lời 01'	,   1			,	0		),
